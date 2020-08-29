@@ -10,4 +10,4 @@ PMID: 27623010
 
 Circadian genes identified to be regulated by specific contexts are provided as "all_gene_list.txt"
 
-All analyses were performed in R open source software, scripts are anotated and provided as "R-script for analysis.R"
+All analyses were performed in R open source software, scripts are anotations and provided as "R-script for analysis.R"
