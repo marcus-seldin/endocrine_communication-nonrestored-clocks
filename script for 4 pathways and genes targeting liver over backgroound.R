@@ -1,4 +1,3 @@
-setwd('G:/My Drive/lab files/paolo/autonomous clock lookups/scaled and normalized to all')
 library(dplyr)
 library(reshape2)
 library(viridis)
@@ -8,14 +7,14 @@ library(ggplot2)
 library(forcats)
 library(colormap)
 allowWGCNAThreads()
-sec_prots = read.delim('G:/My Drive/Datasets/Mouse/genome files/secreted_proteins.txt')
+sec_prots = read.delim('secreted_proteins.txt')
 
-adip = read.delim('G:/My Drive/Datasets/Mouse/HMDP/HMDP_HFHS_trx_adipose.txt')
-musc = read.delim('G:/My Drive/Datasets/Mouse/HMDP/HMDP_HFHS_trx_muscle.txt')
-liver = read.delim('G:/My Drive/Datasets/Mouse/HMDP/HMDP_HFHS_trx_liver.txt')
-int = read.delim('G:/My Drive/Datasets/Mouse/HMDP/HMDP_HFHS_trx_intestine.txt')
-hypo = read.delim('G:/My Drive/Datasets/Mouse/HMDP/HMDP_HFHS_trx_hypothalamus.txt')
-traits = read.delim('G:/My Drive/Datasets/Mouse/HMDP/HMDP_HFHS_traits.txt')
+adip = read.delim('HMDP_HFHS_trx_adipose.txt')
+musc = read.delim('HMDP_HFHS_trx_muscle.txt')
+liver = read.delim('HMDP/HMDP_HFHS_trx_liver.txt')
+int = read.delim('HMDP/HMDP_HFHS_trx_intestine.txt')
+hypo = read.delim('HMDP_HFHS_trx_hypothalamus.txt')
+traits = read.delim('HMDP_HFHS_traits.txt')
 
 adip = adip[adip$Strain %in% liver$Strain,]
 liver = liver[liver$Strain %in% adip$Strain,]
