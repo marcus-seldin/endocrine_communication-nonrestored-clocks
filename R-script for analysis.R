@@ -11,8 +11,8 @@ sec_prots = read.delim('secreted_proteins.txt')
 
 adip = read.delim('HMDP_HFHS_trx_adipose.txt')
 musc = read.delim('HMDP_HFHS_trx_muscle.txt')
-liver = read.delim('HMDP/HMDP_HFHS_trx_liver.txt')
-int = read.delim('HMDP/HMDP_HFHS_trx_intestine.txt')
+liver = read.delim('HMDP_HFHS_trx_liver.txt')
+int = read.delim('HMDP_HFHS_trx_intestine.txt')
 hypo = read.delim('HMDP_HFHS_trx_hypothalamus.txt')
 traits = read.delim('HMDP_HFHS_traits.txt')
 
