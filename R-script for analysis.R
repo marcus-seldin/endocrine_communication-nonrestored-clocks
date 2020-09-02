@@ -91,7 +91,7 @@ ss6 = ss1[grepl('muscle', ss1$tissue),]
 ss6$fitted_ssec = ss6$Ssec_score/mean(ss6$Ssec_score)
 
 new_scores = as.data.frame(rbind(ss2, ss4, ss5, ss6))
-merged_scores = background_ssec
+merged_scores = new_scores
 
 #h_pathway$not.restored
 heart_pathway = l1[l1$gene_symbol %in% h_pathway$not.restored,]
