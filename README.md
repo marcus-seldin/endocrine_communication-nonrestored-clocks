@@ -4,7 +4,7 @@ The datasets used can be downloaded directly at: https://drive.google.com/drive/
 
 Analyses were performed using the same approaches as defined in:
 Seldin, M. M. et al. A Strategy for Discovery of Endocrine Interactions with Application to Whole-Body Metabolism. Cell Metab. 27, 1138-1155.e6 (2018) &
-Seldin, M. M. & Lusis, A. J. Systems-based approaches for investigation of inter-tissue communication. J. Lipid Res. 60, 450–455 (2019)
+Seldin, M. M. and Lusis, A. J. Systems-based approaches for investigation of inter-tissue communication. J. Lipid Res. 60, 450–455 (2019)
 
 
 The mouse population data (HMDP) was generated in the following studies
