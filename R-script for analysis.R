@@ -175,34 +175,6 @@ ggplot(scores1, aes(x=fct_reorder2(gene_symbol, normalized_nonrestored, normaliz
 scores1 = scores[scores$normalized_nonrestored > mean(scores$normalized_nonrestored + (sd(scores$normalized_nonrestored)*3)),]
 table(scores1$tissue)
 pie(table(scores1$tissue))
-#Look at circadian vs non-circadian scores in not-restored
-#scores1 = scores[scores]
-
-#Finally we compare circadian vs non-circadian peripheral genes with respect to correlation with liver nonrestroed genes
-bin_mat = dcast(all_tissues, Strain ~ gene, value.var = 'expression_value', fun.aggregate = mean)
-row.names(bin_mat) = bin_mat$Strain
-bin_mat$Strain = NULL
-row.names(bin_mat)[1:10]
-bin_mat = bin_mat[row.names(bin_mat) %in% row.names(h2),]
-pp1 = bicorAndPvalue(bin_mat, h2, use='p')
-nonr_cors = melt(pp1$p)
-head(nonr_cors)
-colnames(nonr_cors) = c('origin_gene', 'liver_gene', 'pvalue')
-nonr_cors$log10p = -log10(nonr_cors$pvalue)
-nonr_cors$origin_gene_only = gsub("_.*","", nonr_cors$origin_gene) 
-nonr_cors$pathway = match(nonr_cors$origin_gene_only, h_pathway$all.liver.circadian.genes, nomatch = 0)
-nonr_cors$pathway = ifelse(nonr_cors$pathway > 0, 'circadian', 'non_circadian')
-nonr_cors = na.omit(nonr_cors)
-tt1 = nonr_cors %>% select(pathway, log10p) %>% group_by(pathway) %>% summarize(avg=mean(log10p), n=n(), sd = sd(log10p), se=sd/sqrt(n), lower.ci = avg - qt(1 - (0.05 / 2), n - 1) * se, upper.ci = avg + qt(1 - (0.05 / 2), n - 1) * se)
-tt1$pathway = factor(tt1$pathway, levels=c('non_circadian', 'circadian'))
-#maybe count the numebr of significant??
-ggplot(tt1, aes(x=pathway, y=avg, fill=pathway)) + 
-  geom_point(stat="identity", color='black', size=3) +
-  geom_errorbar(aes(ymin=lower.ci, ymax=upper.ci), width=.4,
-                position=position_dodge(.9)) + theme_minimal() + ylab('log10(gene-gene bicor pvalue)') +xlab('none')
-
-ggplot(nonr_cors, aes(x=pathway, y=log10p, fill=pathway))  + geom_violin() + geom_boxplot(aes(fill = pathway), width=0.1)
-
 
 
 
