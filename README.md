@@ -1,5 +1,5 @@
 # endocrine_communication-nonrestored-clocks
-## Analysis of Mouse Diverstiy Panel data to identify crosstissue processes correlated with liver non-restored gene
+## Analysis of hybrid mouse diverstiy panel data to identify crosstissue processes correlated with liver non-restored genes
 The datasets used can be downloaded directly at: https://drive.google.com/drive/folders/1tVs2aExq0eD1MjznmWeLktlQmRPNbct4?usp=sharing
 
 Analyses were performed using the same approaches as defined in:
