@@ -13,7 +13,7 @@ allowWGCNAThreads()
 setwd('path_to_files/')
 
 #Load in population datasets and lists
-#Read in curated lists of secreted proteins, along with the database of traits.
+#Read in curated lists of secreted proteins, along with the lists of genes from circadian studies
 sec_prots = read.delim('secreted_proteins.txt')
 adip = read.delim('HMDP_HFHS_trx_adipose.txt')
 musc = read.delim('HMDP_HFHS_trx_muscle.txt')
@@ -43,7 +43,7 @@ m1 = musc %>% select(Strain, gene, 'gene_symbol' = Symbol, expression_value)
 i1 = int %>% select(Strain, gene, 'gene_symbol' = Symbol, expression_value)
 hypo1 = hypo %>% select(Strain, gene, 'gene_symbol' = gene_short_name, 'expression_value' = value)
 
-
+#The datasets have been loaded, now proceed with analysis
 #Begin comparing internal correlation structure of gene list - here we will look at all non-circadian genes, listed in #h_pathway$all.liver.NON.circadian.genes
 liv_pathway = l1[l1$gene_symbol %in% h_pathway$all.liver.NON.circadian.genes,]
 h2 = dcast(liv_pathway, Strain ~ gene_symbol, fun.aggregate = mean, value.var = 'expression_value')
@@ -164,7 +164,7 @@ scores$tissue_col = colors[match(scores$tissue, names(colors))]
 #Inspect the top genes
 head(scores)
 
-#plot all peripheral gene enrichments for nonrestored liver genes - this plot will take some time to generate
+#plot all peripheral gene enrichments for nonrestored liver genes
 ggplot(scores, aes(x=fct_reorder2(gene_symbol, normalized_nonrestored, normalized_nonrestored, .desc = T), y=normalized_nonrestored)) + geom_col(fill=scores$tissue_col) + theme(axis.text.x = element_text(angle=90, size=8), plot.title = element_text(hjust=0.5)) +ggtitle('All genes enriched for liver not_restored circadian pathways') + theme_minimal() + geom_hline(yintercept=mean(scores$normalized_nonrestored+ (sd(scores$normalized_nonrestored)*2)), linetype="dashed", color = "gray9",cex=3)+ xlab('gene') + ylab('cross-tissue scorec (Ssec) / non-liver ssec') + theme_classic() ### this will take a long time ### 
 
 #take top 20 peripheral genes and plot
